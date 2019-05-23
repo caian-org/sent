@@ -723,7 +723,7 @@ configure(XEvent *e)
 void
 usage()
 {
-	die("usage: %s [file]", argv0);
+    die("usage: %s [-c fgcolor] [-b bgcolor] [-f font] [file]", argv0);
 }
 
 int
@@ -738,6 +738,15 @@ main(int argc, char *argv[])
 	case 'i':
 		use_inverted_colors = 1;
 		break;
+ 	case 'f':
+ 		fontfallbacks[0] = EARGF(usage());
+ 		break;
+ 	case 'c':
+ 		colors[0] = EARGF(usage());
+ 		break;
+ 	case 'b':
+ 		colors[1] = EARGF(usage());
+ 		break;
 	default:
 		usage();
 	} ARGEND
